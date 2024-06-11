@@ -2,11 +2,11 @@ package src;
 
 import java.time.LocalDateTime;
 
-public class Reservation {
+public class Booking {
   private LocalDateTime fromDate;
   private LocalDateTime toDate;
 
-  Reservation(/*LocalDateTime fromDate, LocalDateTime toDate*/) {
+  Booking(/*LocalDateTime fromDate, LocalDateTime toDate*/) {
     this.fromDate = LocalDateTime.now();
     this.toDate = LocalDateTime.now().plusMonths(1);
   }
@@ -28,6 +28,6 @@ public class Reservation {
   }
 
   public void print() {
-    System.out.println("Basic Reservation");
+    System.out.println("Basic Booking");
   }
 }

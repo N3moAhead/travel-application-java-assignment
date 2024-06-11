@@ -19,11 +19,11 @@ public class Main {
     System.out.println("Filtered Flights: FRA");
     flightService.printFlights();
 
-    ReservationService reservationService = new ReservationService();
-    reservationService.createReservation(flightService.getFlight(1));
-    reservationService.createReservation(flightService.getFlight(2));
-    reservationService.createReservation(hotelService.getHotel(2));
-    reservationService.printReservations();
+    BookingService bookingService = new BookingService();
+    bookingService.createBooking(flightService.getFlight(1));
+    bookingService.createBooking(flightService.getFlight(2));
+    bookingService.createBooking(hotelService.getHotel(2));
+    bookingService.printBookings();
   
     Display display = new Display();
     display.printHeading("Lachen Weinen Tanzen Welt");
