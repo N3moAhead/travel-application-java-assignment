@@ -2,9 +2,11 @@ package src;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class HotelService {
-  private HashMap<String, Hotel> hotels = new HashMap<String, Hotel>();
+  private HashMap<String, Hotel> hotels = new HashMap<>();
   private int id = 0;
 
   /** CREATION FUNCTIONS */
@@ -17,10 +19,10 @@ public class HotelService {
 
   /** GETTER FUNCTIONS */
 
-  public ArrayList<Hotel> getHotels(String searchString) {
-    ArrayList<Hotel> filteredHotels = new ArrayList<Hotel>();
-    for (String i: this.hotels.keySet()) {
-      Hotel currentHotel = hotels.get(i);
+  public List<Hotel> getHotels(String searchString) {
+    ArrayList<Hotel> filteredHotels = new ArrayList<>();
+    for (Map.Entry<String, Hotel> hotelEntry: this.hotels.entrySet()) {
+      Hotel currentHotel = hotelEntry.getValue();
       if (currentHotel.getSearchString().contains(searchString)) {
         filteredHotels.add(currentHotel);
       }
@@ -44,8 +46,8 @@ public class HotelService {
    * Prints all stored hotels to the terminal
    */
   void printHotels() {
-    for (String i : this.hotels.keySet()) {
-      hotels.get(i).print();
+    for (Map.Entry<String, Hotel> hotelEntry: this.hotels.entrySet()) {
+      hotelEntry.getValue().print();
     }
   }
 
@@ -53,7 +55,7 @@ public class HotelService {
    * Prints a list of given hotels to the terminal
    * @param hotels
    */
-  void printHotels(ArrayList<Hotel> hotels) {
+  void printHotels(List<Hotel> hotels) {
     for (Hotel hotel: hotels) {
       hotel.print();
     }

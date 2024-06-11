@@ -10,6 +10,7 @@ public class FlightReservation extends Reservation {
     this.flight = flight;
   }
 
+  @Override
   public void print() {
     System.out.println("Reservation:");
     System.out.println(this.getFromDate());

@@ -1,10 +1,11 @@
 package src;
 
 import java.util.HashMap;
-import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 
 public class ReservationService {
-  private HashMap<String, Reservation> reservations = new HashMap<String, Reservation>();
+  private HashMap<String, Reservation> reservations = new HashMap<>();
   private int id = 0;
 
   /** CREATION FUNCTIONS */
@@ -28,12 +29,12 @@ public class ReservationService {
   /** DISPLAY FUNCTIONS */
 
   public void printReservations() {
-    for (String i : this.reservations.keySet()) {
-      this.reservations.get(i).print();
+    for (Map.Entry<String, Reservation> reservationEntry : this.reservations.entrySet()) {
+      reservationEntry.getValue().print();
     }
   }
 
-  public void printReservations(ArrayList<Reservation> reservations) {
+  public void printReservations(List<Reservation> reservations) {
     for (Reservation reservation : reservations) {
       reservation.print();
     }

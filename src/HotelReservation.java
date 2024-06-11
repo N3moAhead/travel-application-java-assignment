@@ -10,6 +10,7 @@ public class HotelReservation extends Reservation {
     this.hotel = hotel;
   }
 
+  @Override
   public void print() {
     System.out.println("Reservation:");
     System.out.println(this.getFromDate());
