@@ -6,9 +6,9 @@ public class Reservation {
   private LocalDateTime fromDate;
   private LocalDateTime toDate;
 
-  Reservation(LocalDateTime fromDate, LocalDateTime toDate) {
-    this.fromDate = fromDate;
-    this.toDate = toDate;
+  Reservation(/*LocalDateTime fromDate, LocalDateTime toDate*/) {
+    this.fromDate = LocalDateTime.now();
+    this.toDate = LocalDateTime.now().plusMonths(1);
   }
 
   public LocalDateTime getFromDate() {
@@ -25,5 +25,9 @@ public class Reservation {
 
   public void setToDate(LocalDateTime toDate) {
     this.toDate = toDate;
+  }
+
+  public void print() {
+    System.out.println("Basic Reservation");
   }
 }

@@ -17,6 +17,15 @@ public class Main {
     flightService.createFlight("TES213");
     flightService.printFlights();
     System.out.println("Filtered Flights: FRA");
-    flightService.printFlights(flightService.getFlights("3"));
+    flightService.printFlights();
+
+    System.out.println("Get a specific Flight");
+
+    ReservationService reservationService = new ReservationService();
+    reservationService.createReservation(flightService.getFlight(1));
+    reservationService.createReservation(flightService.getFlight(2));
+    reservationService.createReservation(hotelService.getHotel(2));
+
+    reservationService.printReservations();
   }
 }

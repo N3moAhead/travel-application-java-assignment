@@ -1,16 +1,16 @@
 package src;
 
-import java.time.LocalDateTime;
+// import java.time.LocalDateTime;
 
 public class HotelReservation extends Reservation {
   private Hotel hotel;
 
-  HotelReservation(LocalDateTime fromDate, LocalDateTime toDate, Hotel hotel) {
-    super(fromDate, toDate);
+  HotelReservation(/*LocalDateTime fromDate, LocalDateTime toDate,*/ Hotel hotel) {
+    // super(fromDate, toDate);
     this.hotel = hotel;
   }
 
-  void print() {
+  public void print() {
     System.out.println("Reservation:");
     System.out.println(this.getFromDate());
     System.out.println(this.getToDate());
