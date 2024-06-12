@@ -1,13 +1,11 @@
 package src;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+
 public class Main {
   public static void main(String[] args) {
     HotelService hotelService = new HotelService();
-    hotelService.createHotel("Apart Mannheim");
-    hotelService.createHotel("Maritim Mannheim");
-    hotelService.createHotel("Hotel 22 Frankfurt");
-    hotelService.printHotels();
-    System.out.println("Filtered List: Mannheim");
     hotelService.printHotels(hotelService.getHotels("Mannheim"));
 
     FlightService flightService = new FlightService();
@@ -24,11 +22,12 @@ public class Main {
     bookingService.createBooking(flightService.getFlight(2));
     bookingService.createBooking(hotelService.getHotel(2));
     bookingService.printBookings();
-  
+
     Display display = new Display();
-    display.printHeading("Lachen Weinen Tanzen Welt");
-    display.printHeading("Test");
-    display.printHeading("Nein leider nicht");
-    display.printHeading("Wissen eingrenzen");
+    display.printHeading("Main Menu");
+    Form form = new Form();
+    int option = form.getRadioOption("Wähle eine neue Menü Variante",
+        new ArrayList<>(Arrays.asList("Book Flights", "Book Hotel", "View Bookings", "Lachen")));
+    System.out.println(option);
   }
 }

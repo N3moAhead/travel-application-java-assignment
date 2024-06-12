@@ -1,5 +1,7 @@
 package src;
 
+import java.util.List;
+
 public class Display {
   public void printHeading(String heading) {
     int width = 50;
@@ -25,5 +27,11 @@ public class Display {
     }
     System.out.println("*");
     System.out.println("**************************************************");
+  }
+
+  public void printOptions(List<String> options) {
+    for (int i = 0; i < options.size(); i++) {
+      System.out.println("(" + (i + 1) + ") " + options.get(i));
+    }
   }
 }
