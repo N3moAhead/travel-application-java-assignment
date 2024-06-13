@@ -25,7 +25,7 @@ public class FlightService {
 
   /** GETTER FUNCTIONS */
 
-  public List<Flight> getFlights(String searchString) {
+  public List<Flight> getFilteredFlights(String searchString) {
     List<Flight> filteredFlights = new ArrayList<>();
     for (Map.Entry<String, Flight> flightEntry : this.flights.entrySet()) {
       Flight currentFlight = flightEntry.getValue();
@@ -38,8 +38,8 @@ public class FlightService {
 
   public Flight getFlight(int id) {
     String key = String.valueOf(id);
-    if (flights.containsKey(key)) {
-      return flights.get(key);
+    if (this.flights.containsKey(key)) {
+      return this.flights.get(key);
     }
     System.out.println("There is no flight with the ID: " + key);
     return null;
@@ -64,7 +64,7 @@ public class FlightService {
     );
     if (option == 1) {
       String searchString = this.form.getString("Flight-Search");
-      List<Flight> searchedFlights = this.getFlights(searchString);
+      List<Flight> searchedFlights = this.getFilteredFlights(searchString);
       if (searchedFlights.isEmpty()) {
         System.out.println("No Flight could be found :/ here are all flights unfiltered instead.");
         this.printFlights();

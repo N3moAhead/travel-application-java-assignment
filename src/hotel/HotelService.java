@@ -31,7 +31,7 @@ public class HotelService {
 
   /** GETTER FUNCTIONS */
 
-  public List<Hotel> getHotels(String searchString) {
+  public List<Hotel> getFilteredHotels(String searchString) {
     ArrayList<Hotel> filteredHotels = new ArrayList<>();
     for (Map.Entry<String, Hotel> hotelEntry : this.hotels.entrySet()) {
       Hotel currentHotel = hotelEntry.getValue();
@@ -69,7 +69,7 @@ public class HotelService {
         new ArrayList<>(Arrays.asList("Yes", "No")));
     if (option == 1) {
       String searchString = this.form.getString("Hotel-Search");
-      List<Hotel> searchedHotels = this.getHotels(searchString);
+      List<Hotel> searchedHotels = this.getFilteredHotels(searchString);
       if (searchedHotels.isEmpty()) {
         System.out.println("No Hotel could be found :/ here are all hotels unfiltered instead.");
         this.printHotels();

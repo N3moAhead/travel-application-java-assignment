@@ -19,4 +19,12 @@ public class FlightBooking extends Booking {
     System.out.println(this.getToDate());
     this.flight.print();
   }
+
+  @Override
+  /**
+   * TODO Add the ability to search for the booking date!
+   */
+  public String getSearchString() {
+    return this.flight.getSearchString();
+  }
 }

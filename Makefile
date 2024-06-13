@@ -4,7 +4,7 @@ JAVAC = javac
 JAVA = java
 
 run:
-	@rm -rf $(SRC_DIR)/*.class
+	@rm -rf $(SRC_DIR)/**/*.class
 	$(JAVAC) $(SRC_DIR)/$(MAIN_CLASS).java
 	$(JAVA) $(SRC_DIR)/$(MAIN_CLASS)
 

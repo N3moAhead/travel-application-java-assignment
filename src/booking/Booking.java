@@ -30,4 +30,8 @@ public class Booking {
   public void print() {
     System.out.println("Basic Booking");
   }
+
+  public String getSearchString() {
+    return "";
+  }
 }

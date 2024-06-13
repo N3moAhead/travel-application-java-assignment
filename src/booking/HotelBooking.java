@@ -19,4 +19,12 @@ public class HotelBooking extends Booking {
     System.out.println(this.getToDate());
     hotel.print();
   }
+
+  @Override
+  /**
+   * TODO Add the ability to search for the booking date
+   */
+  public String getSearchString() {
+    return this.hotel.getSearchString();
+  }
 }

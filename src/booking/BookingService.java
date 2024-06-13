@@ -18,6 +18,8 @@ public class BookingService {
   private int id = 0;
   private FlightService flightService;
   private HotelService hotelService;
+  private Display display = new Display();
+  private Form form = new Form();
 
   public BookingService(FlightService flightService, HotelService hotelService) {
     this.flightService = flightService;
@@ -48,12 +50,64 @@ public class BookingService {
     }
   }
 
+  /** GETTER FUNCTIONS */
+
+  public Booking getBooking(int id) {
+    String key = String.valueOf(id);
+    if (bookings.containsKey(key)) {
+      return this.bookings.get(key);
+    }
+    System.out.println("There is no flight with the ID: " + key);
+    return null;
+  }
+
+  public List<Booking> getFilteredBookings(String searchString) {
+    List<Booking> filteredBookings = new ArrayList<>();
+    for (Map.Entry<String, Booking> bookingEntry : this.bookings.entrySet()) {
+      Booking currentBooking = bookingEntry.getValue();
+      if (currentBooking.getSearchString().contains(searchString)) {
+        filteredBookings.add(currentBooking);
+      }
+    }
+    return filteredBookings;
+  }
+
   /** USER MASKS */
 
+  public int bookingIdSelection() {
+    int selectedId = -1;
+    while (selectedId == -1) {
+      int bookingId = this.form.getInt("Type in the ID of the booking you would like to select");
+      if (this.bookings.containsKey(String.valueOf(bookingId))) {
+        selectedId = bookingId;
+      }
+    }
+    return selectedId;
+  }
+
+  public void bookingSearch() {
+    display.printSubHeading("Booking-Search");
+    int option = this.form.getRadioOption(
+        "Would you like to search after a specific Booking?",
+        new ArrayList<>(Arrays.asList("Yes", "No"))
+    );
+    if (option == 1) {
+      String searchString = this.form.getString("Search");
+      List<Booking> searchedBookings = this.getFilteredBookings(searchString);
+      if (searchedBookings.isEmpty()) {
+        System.out.println("No Booking could be found :/ here are all bookings unfiltered instead.");
+        this.printBookings();
+      } else {
+        this.printBookings(searchedBookings);
+      }
+    } else {
+      this.printBookings();
+    }
+  }
+
   public void bookingCreator() {
-    Form form = new Form();
-    new Display().printHeading("Booking Creation");
-    int option = form.getRadioOption(
+    this.display.printHeading("Booking Creation");
+    int option = this.form.getRadioOption(
       "Do you want to book a flight or a hotel?",
       new ArrayList<>(Arrays.asList("Flight", "Hotel"))
     );
@@ -66,6 +120,25 @@ public class BookingService {
       Hotel bookHotel = this.hotelService.hotelSelection();
       this.createBooking(bookHotel);
     }
+  }
+
+  public void bookingRemover() {
+    if (this.bookings.isEmpty()) {
+      System.out.println("Create a Booking first to use this function:)");
+      return;
+    }
+    this.display.printHeading("Booking Removal");
+    int option = this.form.getRadioOption(
+      "Do you want to filter the bookings?",
+      new ArrayList<>(Arrays.asList("Yes", "No"))
+    );
+    if (option == 1) {
+      this.bookingSearch();
+    } else {
+      this.printBookings();
+    }
+    int bookingId = this.bookingIdSelection();
+    this.removeBooking(bookingId);
   }
 
   /** DISPLAY FUNCTIONS */

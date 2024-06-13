@@ -27,7 +27,16 @@ public class Main {
       display.printHeading("Main Menu");
       int option = form.getRadioOption(
           "Choose a option",
-          new ArrayList<>(Arrays.asList("Search Flights", "Search Hotels", "Create Booking", "End Program"))
+          new ArrayList<>(
+            Arrays.asList(
+              "Search Flights",
+              "Search Hotels",
+              "Search Bookings",
+              "Create Booking",
+              "Remove Booking",
+              "End Program"
+            )
+          )
         );
       switch (option) {
         case 1:
@@ -37,9 +46,15 @@ public class Main {
           hotelService.hotelSearch();
           break;
         case 3:
-          bookingService.bookingCreator();
+          bookingService.bookingSearch();
           break;
         case 4:
+          bookingService.bookingCreator();
+          break;
+        case 5:
+          bookingService.bookingRemover();
+          break;
+        case 6:
           isRunning = false;
           break;
         default:
