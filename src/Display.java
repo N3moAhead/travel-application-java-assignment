@@ -29,6 +29,19 @@ public class Display {
     System.out.println("**************************************************");
   }
 
+  public void printSubHeading(String subHeading) {
+    int width = 50;
+    int padding = (width - subHeading.length()) / 2;
+    for (int i = 0; i < padding - 1; i++) {
+      System.out.print("-");
+    }
+    System.out.print(subHeading);
+    for (int i = 0; i < padding - 1; i++) {
+      System.out.print("-");
+    }
+    System.out.println();
+  }
+
   public void printOptions(List<String> options) {
     for (int i = 0; i < options.size(); i++) {
       System.out.println("(" + (i + 1) + ") " + options.get(i));
