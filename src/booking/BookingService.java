@@ -1,4 +1,4 @@
-package src;
+package src.booking;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -6,13 +6,20 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import src.flight.Flight;
+import src.flight.FlightService;
+import src.hotel.Hotel;
+import src.hotel.HotelService;
+import src.util.Display;
+import src.util.Form;
+
 public class BookingService {
   private HashMap<String, Booking> bookings = new HashMap<>();
   private int id = 0;
   private FlightService flightService;
   private HotelService hotelService;
 
-  BookingService(FlightService flightService, HotelService hotelService) {
+  public BookingService(FlightService flightService, HotelService hotelService) {
     this.flightService = flightService;
     this.hotelService = hotelService;
   }

@@ -1,4 +1,4 @@
-package src;
+package src.flight;
 
 // import java.time.LocalDateTime;
 
@@ -11,7 +11,7 @@ public class Flight {
   // private LocalDateTime arrival;
   // private int delay;
 
-  Flight(
+  public Flight(
       int id,
       String flightNumber
       // String fromAirport,
@@ -28,7 +28,7 @@ public class Flight {
     // this.delay = 0;
   }
 
-  void print() {
+  public void print() {
     System.out.println("ID: " + this.id + " Flight:\t" + this.flightNumber);
     // System.out.println("From: " + this.fromAirport + " To: " + this.toAirport);
     // System.out.println(this.departure);
@@ -36,7 +36,7 @@ public class Flight {
     // System.out.println(this.delay);
   }
 
-  String getSearchString() {
+  public String getSearchString() {
     return this.flightNumber + String.valueOf(this.id);
   }
 }

@@ -1,4 +1,4 @@
-package src;
+package src.booking;
 
 import java.time.LocalDateTime;
 

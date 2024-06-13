@@ -1,13 +1,15 @@
-package src;
+package src.booking;
+
+import src.hotel.Hotel;
 
 // import java.time.LocalDateTime;
 
-public class FlightBooking extends Booking {
-  private Flight flight;
+public class HotelBooking extends Booking {
+  private Hotel hotel;
 
-  FlightBooking(/*LocalDateTime fromDate, LocalDateTime toDate,*/ Flight flight) {
+  HotelBooking(/*LocalDateTime fromDate, LocalDateTime toDate,*/ Hotel hotel) {
     // super(fromDate, toDate);
-    this.flight = flight;
+    this.hotel = hotel;
   }
 
   @Override
@@ -15,6 +17,6 @@ public class FlightBooking extends Booking {
     System.out.println("Booking:");
     System.out.println(this.getFromDate());
     System.out.println(this.getToDate());
-    this.flight.print();
+    hotel.print();
   }
 }

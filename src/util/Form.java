@@ -1,4 +1,4 @@
-package src;
+package src.util;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -9,7 +9,7 @@ import java.util.List;
 public class Form {
   private Scanner scanner;
 
-  Form() {
+  public Form() {
     this.scanner = new Scanner(System.in);
   }
 

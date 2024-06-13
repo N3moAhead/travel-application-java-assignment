@@ -1,10 +1,13 @@
-package src;
+package src.hotel;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import src.util.Display;
+import src.util.Form;
 
 public class HotelService {
   private HashMap<String, Hotel> hotels = new HashMap<>();
@@ -14,13 +17,13 @@ public class HotelService {
 
   /** SETTER FUNCTIONS */
 
-  void createHotel(String hotelName) {
+  public void createHotel(String hotelName) {
     this.id += 1;
     Hotel newHotel = new Hotel(this.id, hotelName);
     hotels.put(String.valueOf(id), newHotel);
   }
 
-  void hotelCreator() {
+  public void hotelCreator() {
     this.display.printHeading("Hotel Creation");
     String hotelName = this.form.getString("Type in a hotelname");
     this.createHotel(hotelName);
