@@ -6,6 +6,7 @@ public class Display {
   public void printHeading(String heading) {
     int width = 50;
     int padding = (width - heading.length()) / 2;
+    System.out.println("\n\n");
     System.out.println("**************************************************");
     System.out.print("*");
     for (int i = 0; i < width - 2; i++) {
@@ -26,12 +27,13 @@ public class Display {
       System.out.print(" ");
     }
     System.out.println("*");
-    System.out.println("**************************************************");
+    System.out.println("**************************************************\n");
   }
 
   public void printSubHeading(String subHeading) {
     int width = 50;
     int padding = (width - subHeading.length()) / 2;
+    System.out.println("\n");
     for (int i = 0; i < padding - 1; i++) {
       System.out.print("-");
     }
@@ -39,7 +41,7 @@ public class Display {
     for (int i = 0; i < padding - 1; i++) {
       System.out.print("-");
     }
-    System.out.println();
+    System.out.println("\n");
   }
 
   public void printOptions(List<String> options) {

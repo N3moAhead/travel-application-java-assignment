@@ -17,7 +17,7 @@ public class BookingService {
     this.hotelService = hotelService;
   }
 
-  /** CREATION FUNCTIONS */
+  /** SETTER FUNCTIONS */
 
   public void createBooking(Flight flight) {
     this.id += 1;
@@ -31,6 +31,18 @@ public class BookingService {
     this.bookings.put(String.valueOf(id), hotelBooking);
   }
 
+  public void removeBooking(int id) {
+    String key = String.valueOf(id);
+    if (this.bookings.containsKey(key)) {
+      this.bookings.remove(key);
+      System.out.println("Booking with ID: " + key + " has been removed");
+    } else {
+      System.out.println("There is no Booking with the ID: " + key);
+    }
+  }
+
+  /** USER MASKS */
+
   public void bookingCreator() {
     Form form = new Form();
     new Display().printHeading("Booking Creation");
@@ -39,16 +51,14 @@ public class BookingService {
       new ArrayList<>(Arrays.asList("Flight", "Hotel"))
     );
     if (option == 1) {
-      Flight bookFlight = this.flightService.flightSearch();
+      this.flightService.flightSearch();
+      Flight bookFlight = this.flightService.flightSelection();
       this.createBooking(bookFlight);
     } else {
-      Hotel bookHotel = this.hotelService.hotelSearch();
+      this.hotelService.hotelSearch();
+      Hotel bookHotel = this.hotelService.hotelSelection();
       this.createBooking(bookHotel);
     }
-  }
-
-  public void removeBooking(int id) {
-    this.bookings.remove(String.valueOf(id));
   }
 
   /** DISPLAY FUNCTIONS */

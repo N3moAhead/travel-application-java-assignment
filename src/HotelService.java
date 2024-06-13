@@ -9,9 +9,11 @@ import java.util.Map;
 public class HotelService {
   private HashMap<String, Hotel> hotels = new HashMap<>();
   private int id = 0;
+  private Form form = new Form();
+  private Display display = new Display();
 
-  /** CREATION FUNCTIONS */
-  
+  /** SETTER FUNCTIONS */
+
   void createHotel(String hotelName) {
     this.id += 1;
     Hotel newHotel = new Hotel(this.id, hotelName);
@@ -19,10 +21,8 @@ public class HotelService {
   }
 
   void hotelCreator() {
-    Display display = new Display();
-    Form form = new Form();
-    display.printHeading("Hotel Creation");
-    String hotelName = form.getString("Type in a hotelname");
+    this.display.printHeading("Hotel Creation");
+    String hotelName = this.form.getString("Type in a hotelname");
     this.createHotel(hotelName);
   }
 
@@ -30,7 +30,7 @@ public class HotelService {
 
   public List<Hotel> getHotels(String searchString) {
     ArrayList<Hotel> filteredHotels = new ArrayList<>();
-    for (Map.Entry<String, Hotel> hotelEntry: this.hotels.entrySet()) {
+    for (Map.Entry<String, Hotel> hotelEntry : this.hotels.entrySet()) {
       Hotel currentHotel = hotelEntry.getValue();
       if (currentHotel.getSearchString().contains(searchString)) {
         filteredHotels.add(currentHotel);
@@ -48,33 +48,35 @@ public class HotelService {
     return null;
   }
 
-  Hotel hotelSearch() {
-    Form form = new Form();
-    Display display = new Display();
+  /** USER MASKS */
+
+  public Hotel hotelSelection() {
     Hotel hotel = null;
-    display.printSubHeading("Hotel-Search");
     while (hotel == null) {
-      int option = form.getRadioOption(
-        "Would you like to search after a specific Hotel?",
-        new ArrayList<>(Arrays.asList("Yes", "No"))
-      );
-      if (option == 1) {
-        String searchString = form.getString("Hotel-Search");
-        List<Hotel> searchedHotels = this.getHotels(searchString);
-        if (searchedHotels.isEmpty()) {
-          System.out.println("No Hotel could be found please try again.");
-          continue;
-        }
-        this.printHotels(searchedHotels);
-      } else {
-        this.printHotels();
-      }
-      int hotelId = form.getInt("Type in the ID of the hotel you would like to select");
+      int hotelId = this.form.getInt("Type in the ID of the hotel you would like to select");
       hotel = this.getHotel(hotelId);
     }
     return hotel;
   }
 
+  public void hotelSearch() {
+    this.display.printSubHeading("Hotel-Search");
+    int option = this.form.getRadioOption(
+        "Would you like to search after a specific Hotel?",
+        new ArrayList<>(Arrays.asList("Yes", "No")));
+    if (option == 1) {
+      String searchString = this.form.getString("Hotel-Search");
+      List<Hotel> searchedHotels = this.getHotels(searchString);
+      if (searchedHotels.isEmpty()) {
+        System.out.println("No Hotel could be found :/ here are all hotels unfiltered instead.");
+        this.printHotels();
+      } else {
+        this.printHotels(searchedHotels);
+      }
+    } else {
+      this.printHotels();
+    }
+  }
 
   /** DISPLAY FUNCTIONS */
 
@@ -82,17 +84,18 @@ public class HotelService {
    * Prints all stored hotels to the terminal
    */
   void printHotels() {
-    for (Map.Entry<String, Hotel> hotelEntry: this.hotels.entrySet()) {
+    for (Map.Entry<String, Hotel> hotelEntry : this.hotels.entrySet()) {
       hotelEntry.getValue().print();
     }
   }
 
   /**
    * Prints a list of given hotels to the terminal
+   * 
    * @param hotels
    */
   void printHotels(List<Hotel> hotels) {
-    for (Hotel hotel: hotels) {
+    for (Hotel hotel : hotels) {
       hotel.print();
     }
   }
