@@ -17,16 +17,10 @@ public class HotelService {
 
   /** SETTER FUNCTIONS */
 
-  public void createHotel(String hotelName) {
+  public void createHotel(String hotelName, int stars, String country) {
     this.id += 1;
-    Hotel newHotel = new Hotel(this.id, hotelName);
+    Hotel newHotel = new Hotel(this.id, hotelName, stars, country);
     hotels.put(String.valueOf(id), newHotel);
-  }
-
-  public void hotelCreator() {
-    this.display.printHeading("Hotel Creation");
-    String hotelName = this.form.getString("Type in a hotelname");
-    this.createHotel(hotelName);
   }
 
   /** GETTER FUNCTIONS */
@@ -79,6 +73,15 @@ public class HotelService {
     } else {
       this.printHotels();
     }
+  }
+
+  public void hotelCreator() {
+    this.display.printHeading("Hotel Creation");
+    System.out.println("Complete this form:");
+    String hotelName = this.form.getString("Hotelname");
+    int stars = this.form.getInt("Stars of the hotel");
+    String country = this.form.getString("Location");
+    this.createHotel(hotelName, stars, country);
   }
 
   /** DISPLAY FUNCTIONS */

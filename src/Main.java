@@ -18,8 +18,6 @@ public class Main {
     Display display = new Display();
 
     hotelService.hotelCreator();
-    hotelService.hotelCreator();
-    flightService.flightCreator();
     flightService.flightCreator();
 
     boolean isRunning = true;

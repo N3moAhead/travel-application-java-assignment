@@ -1,5 +1,6 @@
 package src.flight;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -17,9 +18,9 @@ public class FlightService {
 
   /** SETTER FUNCTIONS */
 
-  public void createFlight(String flightnumber) {
+  public void createFlight(String flightnumber, String from, String to, LocalDateTime departure, LocalDateTime arrival) {
     this.id += 1;
-    Flight newFlight = new Flight(this.id, flightnumber);
+    Flight newFlight = new Flight(this.id, flightnumber, from, to, departure, arrival);
     flights.put(String.valueOf(this.id), newFlight);
   }
 
@@ -78,8 +79,13 @@ public class FlightService {
 
   public void flightCreator() {
     this.display.printHeading("Flight Creation");
-    String flightNumber = this.form.getString("Type in a FlightNumber");
-    this.createFlight(flightNumber);
+    System.out.println("Complete this form:");
+    String flightNumber = this.form.getString("Flightnumber");
+    String from = this.form.getString("From Airport");
+    String to = this.form.getString("To Airport");
+    LocalDateTime departure = this.form.getDate("Departure");
+    LocalDateTime arrival = this.form.getDate("Arrival");
+    this.createFlight(flightNumber, from, to, departure, arrival);
   }
 
   /** DISPLAY FUNCTIONS */

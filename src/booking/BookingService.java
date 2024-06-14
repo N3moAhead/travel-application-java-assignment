@@ -1,5 +1,6 @@
 package src.booking;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -30,13 +31,16 @@ public class BookingService {
 
   public void createBooking(Flight flight) {
     this.id += 1;
-    FlightBooking flightBooking = new FlightBooking(this.id, flight);
+    FlightBooking flightBooking = new FlightBooking(this.id, flight, flight.getDeparture(), flight.getArrival());
     this.bookings.put(String.valueOf(id), flightBooking);
   }
 
   public void createBooking(Hotel hotel) {
     this.id += 1;
-    HotelBooking hotelBooking = new HotelBooking(this.id, hotel);
+    System.out.println("\nComplete the form:");
+    LocalDateTime fromDate = this.form.getDate("From");
+    LocalDateTime toDate = this.form.getDate("To");
+    HotelBooking hotelBooking = new HotelBooking(this.id, hotel, fromDate, toDate);
     this.bookings.put(String.valueOf(id), hotelBooking);
   }
 

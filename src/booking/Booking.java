@@ -2,23 +2,25 @@ package src.booking;
 
 import java.time.LocalDateTime;
 
+import src.util.DateTimeUtils;
+
 public class Booking {
   private LocalDateTime fromDate;
   private LocalDateTime toDate;
   final int id;
 
-  Booking(int id) {
-    this.fromDate = LocalDateTime.now();
-    this.toDate = LocalDateTime.now().plusMonths(1);
+  Booking(int id, LocalDateTime fromDate, LocalDateTime toDate) {
+    this.fromDate = fromDate;
+    this.toDate = toDate;
     this.id = id;
   }
 
-  public LocalDateTime getFromDate() {
-    return fromDate;
+  public String getFromDateString() {
+    return DateTimeUtils.formatDateTime(this.fromDate);
   }
 
-  public LocalDateTime getToDate() {
-    return toDate;
+  public String getToDateString() {
+    return DateTimeUtils.formatDateTime(this.toDate);
   }
 
   public void setFromDate(LocalDateTime fromDate) {

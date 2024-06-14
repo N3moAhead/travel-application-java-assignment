@@ -4,9 +4,9 @@ JAVAC = javac
 JAVA = java
 
 run:
-	@rm -rf $(SRC_DIR)/**/*.class
+	@find $(SRC_DIR) -name "*.class" -type f -delete
 	$(JAVAC) $(SRC_DIR)/$(MAIN_CLASS).java
 	$(JAVA) $(SRC_DIR)/$(MAIN_CLASS)
 
 clear:
-	@rm -rf $(SRC_DIR)/*.class
+	@find $(SRC_DIR) -name "*.class" -type f -delete
