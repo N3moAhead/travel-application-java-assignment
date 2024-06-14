@@ -30,13 +30,13 @@ public class BookingService {
 
   public void createBooking(Flight flight) {
     this.id += 1;
-    FlightBooking flightBooking = new FlightBooking(flight);
+    FlightBooking flightBooking = new FlightBooking(this.id, flight);
     this.bookings.put(String.valueOf(id), flightBooking);
   }
 
   public void createBooking(Hotel hotel) {
     this.id += 1;
-    HotelBooking hotelBooking = new HotelBooking(hotel);
+    HotelBooking hotelBooking = new HotelBooking(this.id, hotel);
     this.bookings.put(String.valueOf(id), hotelBooking);
   }
 
@@ -144,13 +144,17 @@ public class BookingService {
   /** DISPLAY FUNCTIONS */
 
   public void printBookings() {
+    System.out.println("\nBookings:");
     for (Map.Entry<String, Booking> bookingEntry : this.bookings.entrySet()) {
+      System.out.print("- ");
       bookingEntry.getValue().print();
     }
   }
 
   public void printBookings(List<Booking> bookings) {
+    System.out.println("\nBookings:");
     for (Booking booking : bookings) {
+      System.out.print("- ");
       booking.print();
     }
   }

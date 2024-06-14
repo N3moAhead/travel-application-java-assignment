@@ -87,7 +87,9 @@ public class HotelService {
    * Prints all stored hotels to the terminal
    */
   void printHotels() {
+    System.out.println("\nHotels:");
     for (Map.Entry<String, Hotel> hotelEntry : this.hotels.entrySet()) {
+      System.out.print("- ");
       hotelEntry.getValue().print();
     }
   }
@@ -98,7 +100,9 @@ public class HotelService {
    * @param hotels
    */
   void printHotels(List<Hotel> hotels) {
+    System.out.println("\nHotels:");
     for (Hotel hotel : hotels) {
+      System.out.print("- ");
       hotel.print();
     }
   }

@@ -85,13 +85,17 @@ public class FlightService {
   /** DISPLAY FUNCTIONS */
 
   void printFlights() {
+    System.out.println("\nFlights:");
     for (Map.Entry<String, Flight> flighEntry : this.flights.entrySet()) {
+      System.out.print("- ");
       flighEntry.getValue().print();
     }
   }
 
   void printFlights(List<Flight> flights) {
+    System.out.println("\nFlights:");
     for (Flight flight : flights) {
+      System.out.print("- ");
       flight.print();
     }
   }
