@@ -6,6 +6,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import src.util.CSVReader;
 import src.util.Display;
 import src.util.Form;
 
@@ -14,6 +15,13 @@ public class HotelService {
   private int id = 0;
   private Form form = new Form();
   private Display display = new Display();
+
+  public HotelService() {
+    List<String[]> records = CSVReader.getRecordsFromFile("./data/hotels.csv");
+    for (String[] item : records) {
+      this.createHotel(item[0], Integer.valueOf(item[1]) , item[2]);
+    }
+  }
 
   /** SETTER FUNCTIONS */
 

@@ -7,6 +7,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import src.util.CSVReader;
+import src.util.DateTimeUtils;
 import src.util.Display;
 import src.util.Form;
 
@@ -15,6 +17,19 @@ public class FlightService {
   private int id = 0;
   private Form form = new Form();
   private Display display = new Display();
+
+  public FlightService() {
+    List<String[]> records = CSVReader.getRecordsFromFile("./data/flights.csv");
+    for (String[] item : records) {
+      this.createFlight(
+        item[0],
+        item[1],
+        item[2],
+        DateTimeUtils.getDateTimeFromString(item[3]),
+        DateTimeUtils.getDateTimeFromString(item[4])
+      );
+    }
+  }
 
   /** SETTER FUNCTIONS */
 

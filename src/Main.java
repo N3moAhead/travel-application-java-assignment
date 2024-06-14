@@ -17,9 +17,6 @@ public class Main {
     Form form = new Form();
     Display display = new Display();
 
-    hotelService.hotelCreator();
-    flightService.flightCreator();
-
     boolean isRunning = true;
     while (isRunning) {
       display.printHeading("Main Menu");

@@ -23,11 +23,7 @@ public class Form {
     while (date == null) {
       System.out.print(title + " (yyyy-MM-dd HH:mm): ");
       String input = scanner.nextLine();
-      try {
-        date = LocalDateTime.parse(input, DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm"));
-      } catch (DateTimeParseException e) {
-        System.out.println("Invalid date format. Please try again.");
-      }
+      date = DateTimeUtils.getDateTimeFromString(input);
     }
     return date;
   }
