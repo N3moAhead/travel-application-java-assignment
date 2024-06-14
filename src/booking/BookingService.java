@@ -35,11 +35,8 @@ public class BookingService {
     this.bookings.put(String.valueOf(id), flightBooking);
   }
 
-  public void createBooking(Hotel hotel) {
+  public void createBooking(Hotel hotel, LocalDateTime fromDate, LocalDateTime toDate) {
     this.id += 1;
-    System.out.println("\nComplete the form:");
-    LocalDateTime fromDate = this.form.getDate("From");
-    LocalDateTime toDate = this.form.getDate("To");
     HotelBooking hotelBooking = new HotelBooking(this.id, hotel, fromDate, toDate);
     this.bookings.put(String.valueOf(id), hotelBooking);
   }
@@ -122,7 +119,10 @@ public class BookingService {
     } else {
       this.hotelService.hotelSearch();
       Hotel bookHotel = this.hotelService.hotelSelection();
-      this.createBooking(bookHotel);
+      System.out.println("\nComplete the form:");
+      LocalDateTime fromDate = this.form.getDate("From");
+      LocalDateTime toDate = this.form.getDate("To");
+      this.createBooking(bookHotel, fromDate, toDate);
     }
   }
 
