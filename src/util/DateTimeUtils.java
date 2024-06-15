@@ -15,7 +15,7 @@ public class DateTimeUtils {
     public static LocalDateTime getDateTimeFromString(String dateString) {
       LocalDateTime date = null;
       try {
-        date = LocalDateTime.parse(dateString, DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm"));
+        date = LocalDateTime.parse(dateString, formatter);
       } catch (DateTimeParseException e) {
         System.out.println("Invalid date format. Please try again.");
       }

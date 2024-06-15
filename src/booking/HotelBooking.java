@@ -3,6 +3,7 @@ package src.booking;
 import java.time.LocalDateTime;
 
 import src.hotel.Hotel;
+import src.util.DateTimeUtils;
 
 
 public class HotelBooking extends Booking {
@@ -23,10 +24,7 @@ public class HotelBooking extends Booking {
   }
 
   @Override
-  /**
-   * TODO Add the ability to search for the booking date
-   */
   public String getSearchString() {
-    return this.hotel.getSearchString();
+    return this.hotel.getSearchString() + DateTimeUtils.formatDateTime(this.getFromDate()) + DateTimeUtils.formatDateTime(this.getToDate());
   }
 }

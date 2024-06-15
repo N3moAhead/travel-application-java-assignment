@@ -3,6 +3,7 @@ package src.booking;
 import java.time.LocalDateTime;
 
 import src.flight.Flight;
+import src.util.DateTimeUtils;
 
 public class FlightBooking extends Booking {
   private Flight flight;
@@ -22,10 +23,9 @@ public class FlightBooking extends Booking {
   }
 
   @Override
-  /**
-   * TODO Add the ability to search for the booking date!
-   */
   public String getSearchString() {
-    return this.flight.getSearchString();
+    return this.flight.getSearchString()
+        + DateTimeUtils.formatDateTime(this.getFromDate())
+        + DateTimeUtils.formatDateTime(this.getToDate());
   }
 }

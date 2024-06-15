@@ -23,6 +23,14 @@ public class Booking {
     return DateTimeUtils.formatDateTime(this.toDate);
   }
 
+  public LocalDateTime getFromDate() {
+    return fromDate;
+  }
+
+  public LocalDateTime getToDate() {
+    return toDate;
+  }
+
   public void setFromDate(LocalDateTime fromDate) {
     this.fromDate = fromDate;
   }
