@@ -16,7 +16,6 @@ public class FlightService {
   private HashMap<String, Flight> flights = new HashMap<>();
   private int id = 0;
   private Form form = new Form();
-  private Display display = new Display();
 
   public FlightService() {
     List<String[]> records = CSVReader.getRecordsFromFile("./data/flights.csv");
@@ -73,7 +72,7 @@ public class FlightService {
   } 
 
   public void flightSearch() {
-    display.printSubHeading("Flight-Search");
+    Display.printSubHeading("Flight-Search");
     int option = this.form.getRadioOption(
         "Would you like to search after a specific Flight?",
         new ArrayList<>(Arrays.asList("Yes", "No"))
@@ -93,7 +92,7 @@ public class FlightService {
   }
 
   public void flightCreator() {
-    this.display.printHeading("Flight Creation");
+    Display.printHeading("Flight Creation");
     System.out.println("Complete this form:");
     String flightNumber = this.form.getString("Flightnumber");
     String from = this.form.getString("From Airport");

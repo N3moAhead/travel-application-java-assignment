@@ -14,7 +14,7 @@ public class Hotel {
   }
 
   public void print() {
-    System.out.println("ID: " + this.id + " name: " + this.name + " stars: " + this.stars + " country: " + this.country);
+    System.out.println("ID: " + this.id + " name: " + this.name + " stars: " + this.stars + " location: " + this.country);
   }
 
   public String getSearchString() {

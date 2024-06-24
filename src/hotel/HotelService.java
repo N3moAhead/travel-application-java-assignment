@@ -14,7 +14,6 @@ public class HotelService {
   private HashMap<String, Hotel> hotels = new HashMap<>();
   private int id = 0;
   private Form form = new Form();
-  private Display display = new Display();
 
   public HotelService() {
     List<String[]> records = CSVReader.getRecordsFromFile("./data/hotels.csv");
@@ -65,7 +64,7 @@ public class HotelService {
   }
 
   public void hotelSearch() {
-    this.display.printSubHeading("Hotel-Search");
+    Display.printSubHeading("Hotel-Search");
     int option = this.form.getRadioOption(
         "Would you like to search after a specific Hotel?",
         new ArrayList<>(Arrays.asList("Yes", "No")));
@@ -84,7 +83,7 @@ public class HotelService {
   }
 
   public void hotelCreator() {
-    this.display.printHeading("Hotel Creation");
+    Display.printHeading("Hotel Creation");
     System.out.println("Complete this form:");
     String hotelName = this.form.getString("Hotelname");
     int stars = this.form.getInt("Stars of the hotel");

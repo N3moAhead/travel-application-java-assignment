@@ -15,11 +15,14 @@ public class Main {
     HotelService hotelService = new HotelService();
     BookingService bookingService = new BookingService(flightService, hotelService);
     Form form = new Form();
-    Display display = new Display();
 
+    /**
+     * The main loop of the program. Its designed in a way that
+     * while using the program the user will always return to the main menu
+     */
     boolean isRunning = true;
     while (isRunning) {
-      display.printHeading("Main Menu");
+      Display.printHeading("Main Menu");
       int option = form.getRadioOption(
           "Choose a option",
           new ArrayList<>(

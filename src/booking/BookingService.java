@@ -19,7 +19,6 @@ public class BookingService {
   private int id = 0;
   private FlightService flightService;
   private HotelService hotelService;
-  private Display display = new Display();
   private Form form = new Form();
 
   public BookingService(FlightService flightService, HotelService hotelService) {
@@ -87,7 +86,7 @@ public class BookingService {
   }
 
   public void bookingSearch() {
-    display.printSubHeading("Booking-Search");
+    Display.printSubHeading("Booking-Search");
     int option = this.form.getRadioOption(
         "Would you like to search after a specific Booking?",
         new ArrayList<>(Arrays.asList("Yes", "No"))
@@ -107,7 +106,7 @@ public class BookingService {
   }
 
   public void bookingCreator() {
-    this.display.printHeading("Booking Creation");
+    Display.printHeading("Booking Creation");
     int option = this.form.getRadioOption(
       "Do you want to book a flight or a hotel?",
       new ArrayList<>(Arrays.asList("Flight", "Hotel"))
@@ -131,7 +130,7 @@ public class BookingService {
       System.out.println("Create a Booking first to use this function:)");
       return;
     }
-    this.display.printHeading("Booking Removal");
+    Display.printHeading("Booking Removal");
     int option = this.form.getRadioOption(
       "Do you want to filter the bookings?",
       new ArrayList<>(Arrays.asList("Yes", "No"))
