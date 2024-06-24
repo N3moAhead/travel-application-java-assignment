@@ -13,10 +13,22 @@ public class Hotel {
     this.country = country;
   }
 
+  /**
+   * Prints all the properties of the hotel to the terminal.
+   * All properties will be printed in a single line.
+   */
   public void print() {
-    System.out.println("ID: " + this.id + " name: " + this.name + " stars: " + this.stars + " location: " + this.country);
+    System.out.println(
+      "ID: " + this.id 
+      + " name: " + this.name
+      + " stars: " + this.stars
+      + " location: " + this.country);
   }
 
+  /**
+   * Creates a string that holds all information about the current hotel
+   * @return the created search string
+   */
   public String getSearchString() {
     return this.name + String.valueOf(this.id) + String.valueOf(this.stars) + this.country;
   }
