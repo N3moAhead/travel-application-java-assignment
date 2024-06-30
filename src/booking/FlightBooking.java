@@ -8,11 +8,23 @@ import src.util.DateTimeUtils;
 public class FlightBooking extends Booking {
   private Flight flight;
 
+  /**
+   * Constructs a FlightBooking instance.
+   *
+   * @param id The ID of the booking
+   * @param flight The flight associated with the booking
+   * @param fromDate The start date of the booking
+   * @param toDate The end date of the booking
+   */
   FlightBooking(int id, Flight flight, LocalDateTime fromDate, LocalDateTime toDate) {
     super(id, fromDate, toDate);
     this.flight = flight;
   }
 
+  /**
+   * Prints the flight booking details.
+   * Overrides the print method in Booking class.
+   */
   @Override
   public void print() {
     System.out.print("ID: " + this.id);
@@ -22,6 +34,12 @@ public class FlightBooking extends Booking {
     this.flight.print();
   }
 
+  /**
+   * Returns a search string containing flight and booking date information.
+   * Overrides the getSearchString method in Booking class.
+   *
+   * @return A search string for the flight booking
+   */
   @Override
   public String getSearchString() {
     return this.flight.getSearchString()
